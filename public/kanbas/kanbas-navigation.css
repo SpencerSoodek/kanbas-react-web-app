@@ -1,0 +1,66 @@
+.wd-kanbas-navigation {
+    background-color: black;
+    width: 75px;
+    height:100%;
+    position:fixed;
+    padding-left:0px;
+}
+
+.wd-kanbas-navigation-ul {
+    /*background-color: black;*/
+    width: 75px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wd-kanbas-navigation-logo {
+    color:red;
+    font-size: 50px;
+}
+
+.wd-kanbas-navigation-button {
+    background-color: black;
+    width: 75px;
+    padding-top: 5px;
+}
+
+.wd-kanbas-navigation-button .link-text {
+    color:white;
+    font-size: 10px;
+    text-decoration: none;
+    padding-top:5px;
+    padding-bottom:5px
+}
+.wd-kanbas-navigation-button .link-text {
+    color:white;
+    font-size: 10px;
+    text-decoration: none;
+    padding-top:5px;
+    padding-bottom:5px
+}
+
+.wd-kanbas-navigation-button-active {
+    background-color: white;
+    color:red;
+    width: 75 px;
+    padding-top: 5px;
+}
+
+
+.wd-kanbas-navigation-button-active .link-text {
+    color:red;
+    font-size: 10px;
+    text-decoration: none;
+    text-align:center;
+    padding-top:5px;
+    padding-bottom:5px
+}
+
+.wd-kanbas-navigation-icon {
+    color:red;
+}
+
+.wd-kanbas-navigation-icon-profile {
+    color:gray
+}
