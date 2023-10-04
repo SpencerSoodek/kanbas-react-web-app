@@ -199,3 +199,12 @@
     color:red;
     text-decoration: none;
 }
+
+.wd-green-check{
+    color:green;
+}
+
+.wd-icon-grey{
+    color:gray;
+    margin-left:10px;
+}
