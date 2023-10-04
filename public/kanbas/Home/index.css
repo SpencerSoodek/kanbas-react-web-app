@@ -208,3 +208,8 @@
     color:gray;
     margin-left:10px;
 }
+
+.wd-list-item-green-border {
+    border-left-width:5px;
+    border-left-color:green;
+}
