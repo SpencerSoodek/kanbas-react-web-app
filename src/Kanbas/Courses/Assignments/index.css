@@ -1,0 +1,11 @@
+.list-group .wd-assignments-head {
+    margin-top: 10px;
+    background:lightgray;
+    color:black;
+    border-width:1px;
+    border-color:gray;
+}
+
+.wd-margin-top-15px {
+    margin-top: 15px
+}

@@ -1,0 +1,31 @@
+
+
+.wd-course-navigation-link {
+    color:red;
+    text-decoration: none;
+    font-size:25px;
+    border:no;
+}
+
+.wd-course-navigation-link-active {
+    color:black;
+    text-decoration: none;
+    border-left:2px;
+    font-size:20px;
+}
+
+.wd-course-navigation .false{
+    background:none;
+    color:red;
+    font-size:20px;
+    border:none;
+
+}
+
+.wd-course-navigation .active {
+    background:none;
+    color:black;
+    border-width:0;
+    border-left-width:5px;
+    border-left-color:black;
+}

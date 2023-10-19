@@ -1,0 +1,26 @@
+.wd-list-item-green-border {
+    border-left-width:5px;
+    border-left-color:green;
+}
+
+.list-group .wd-modules-list {
+    margin-top: 10px;
+    background:lightgray;
+    color:black;
+    border-width:1px;
+    border-color:gray;
+}
+
+.wd-icon-gray{
+    color:gray;
+    margin-left:5px;
+    font-size:x-large;
+    margin-top:15px;
+}
+
+.wd-icon-green{
+    color:green;
+    font-size:x-large;
+    margin-left:5px;
+    margin-top:15px;
+}
