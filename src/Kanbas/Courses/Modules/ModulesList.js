@@ -1,31 +1,75 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import db from "../../Database";
 import "./index.css";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { AiOutlinePlus} from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addModule,
+  deleteModule,
+  updateModule,
+  setModule,
+} from "./modulesReducer";
 
 function ModulesList() {
   const { courseId } = useParams();
-  const modules = db.modules;
+  const modules = useSelector((state) => state.modulesReducer.modules);
+  const module = useSelector((state) => state.modulesReducer.module);
+  const dispatch = useDispatch();
+
+
+
   return (
     <div className="row">
         <div className="col-12">
     
     <ul className="list-group wd-modules-list">
+    <li className="list-group-item wd-modules-list">
+      <div className="row">
+        <div className="col-2">
+        <button className="btn btn-success" onClick={() => dispatch(addModule({ ...module, course: courseId }))}>Add</button>
+        <button className="btn btn-primary" onClick={() => dispatch(updateModule(module))}>
+                Update
+        </button></div>
+        
+
+        <div className="col-2">
+        <input className = "form-control" value={module.name}
+          onChange={(e) =>
+            dispatch(setModule({ ...module, name: e.target.value }))}/>
+            </div>
+        <div className = "col-6">
+        <textarea className= "form-control"value={module.description}
+          onChange={(e) => dispatch(setModule({ ...module, description: e.target.value }))
+        }
+        />
+        </div>
+        </div>
+      </li>
+
       {
        modules
          .filter((module) => module.course === courseId)
          .map((module, index) => (
            <li key={index} className="list-group-item wd-modules-list">
             <div className = "row">
-              <div className="col-10">
+              <div className="col-8">
              <h3>{module.name}</h3>
              <p>{module.description}</p>
              </div>
-             <div className = "col-2">
+             <div className = "col-4">
               <div className="float-end">
+              <button className="btn btn-success"
+              onClick={() => dispatch(setModule(module))}>
+              Edit
+               </button>
+
+              <button className="btn btn-danger"
+              onClick={() => dispatch(deleteModule(module._id))}>
+              Delete
+             </button>
+
               <AiFillCheckCircle className="wd-icon-green"/>
               <AiOutlinePlus className="wd-icon-gray"/>
               <BsThreeDotsVertical className="wd-icon-gray"/></div>
