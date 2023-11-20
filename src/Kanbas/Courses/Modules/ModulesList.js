@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, {useEffect} from "react";
+import {useParams} from "react-router-dom"
 import "./index.css";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { AiOutlinePlus} from "react-icons/ai";
@@ -10,15 +10,47 @@ import {
   deleteModule,
   updateModule,
   setModule,
+  setModules
 } from "./modulesReducer";
 
+import {findModulesForCourse, createModule} from "./client";
+import * as client from "./client";
+
+
 function ModulesList() {
-  const { courseId } = useParams();
+
   const modules = useSelector((state) => state.modulesReducer.modules);
   const module = useSelector((state) => state.modulesReducer.module);
   const dispatch = useDispatch();
 
+  const { courseId } = useParams();
+  useEffect(() => {
+    findModulesForCourse(courseId)
+      .then((modules) =>
+        dispatch(setModules(modules))
+    );
+  }, [courseId, dispatch]);
 
+
+
+  const handleUpdateModule = async () => {
+    await client.updateModule(module);
+    dispatch(updateModule(module));
+  };
+
+
+  const handleDeleteModule = async (moduleId) => {
+    client.deleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
+  };
+
+
+  const handleAddModule = async () => {
+    createModule(courseId, module).then((module) => {
+      dispatch(addModule(module));
+    });
+  };
 
   return (
     <div className="row">
@@ -28,8 +60,11 @@ function ModulesList() {
     <li className="list-group-item wd-modules-list">
       <div className="row">
         <div className="col-2">
-        <button className="btn btn-success" onClick={() => dispatch(addModule({ ...module, course: courseId }))}>Add</button>
-        <button className="btn btn-primary" onClick={() => dispatch(updateModule(module))}>
+        <button className="btn btn-success" onClick={handleAddModule}>Add</button>
+        <button className="btn btn-primary" 
+        onClick={(event) => {
+          event.preventDefault();
+          handleUpdateModule()}}>
                 Update
         </button></div>
         
@@ -66,7 +101,7 @@ function ModulesList() {
                </button>
 
               <button className="btn btn-danger"
-              onClick={() => dispatch(deleteModule(module._id))}>
+              onClick={() => handleDeleteModule(module._id)}>
               Delete
              </button>
 

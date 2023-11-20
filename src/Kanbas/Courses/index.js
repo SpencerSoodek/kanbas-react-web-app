@@ -1,15 +1,31 @@
 // import db from "../../Kanbas/Database";
-import { Navigate, Route, Routes/*, useParams*/ } from "react-router-dom";
+import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import CourseNavigation from "./CourseNavigation";
 import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Breadcrumb from "./Breadcrumb";
+import { useEffect } from "react";
+import axios from "axios";
+import setCourse from "./";
 
-function Courses({courses}) {
-  // const { courseId } = useParams();
-  // const course = db.courses.find((course) => course._id === courseId);
+function Courses() {
+  const API_BASE = process.env.REACT_APP_API_BASE;
+  const URL = `${API_BASE}/courses`;
+
+  const { courseId } = useParams();
+  // const[course, setCourse] = useState({});
+  const findCourseById = async (courseId) => {
+    const response = await axios.get(
+      `${URL}/${courseId}`
+    );
+    setCourse(response.data);
+  };
+  useEffect(() => {
+    findCourseById(courseId);
+  }/*, [courseId]*/);
+  
   return (
     <div>
       <Breadcrumb/>

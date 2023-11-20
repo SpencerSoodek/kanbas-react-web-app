@@ -34,7 +34,7 @@ function Dashboard(
       <div className="card-deck wd-card-deck">
         <div className="row">
         {courses.map((course) => (
-          <Link key={course._id} to={`/Kanbas/Courses/${course._id}`} className="card wd-dashboard-card">
+          <Link key={course._id} to={`/Kanbas/Courses/${course.number}`} className="card wd-dashboard-card">
             
                 <div className="card-img-top wd-card-image" src="..." alt="card image cap"/>
             <div className= "card-body">
@@ -49,9 +49,8 @@ function Dashboard(
 
                 <button className="btn btn-danger"
                   onClick={(event) => {
-                  event.preventDefault();
-                  deleteCourse(course._id);
-                 }}>
+                    event.preventDefault();
+                    deleteCourse(course);}}>
                 Delete
              </button>
 
