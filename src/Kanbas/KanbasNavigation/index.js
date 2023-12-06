@@ -6,8 +6,8 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import './index.css';
 
 function KanbasNavigation() {
-  const links = ["Account", "Dashboard", "Courses", "Calendar"];
-  const icons = [AiOutlineUser, AiOutlineDashboard, BsBook, AiOutlineCalendar]
+  const links = ["Account", "signin", "signup", "Dashboard", "Courses", "Calendar"];
+  const icons = [AiOutlineUser, AiOutlineUser, AiOutlineUser, AiOutlineDashboard, BsBook, AiOutlineCalendar]
   const { pathname } = useLocation();
   return (
     <div className="wd-kanbas-navigation">
